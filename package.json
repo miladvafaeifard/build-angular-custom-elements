@@ -4,10 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "shot:angular": "./script.sh && npm run build && npm run package:angular",
+    "shot:angular": "./script.sh && npm run build:angular",
     "shot": "./script.sh && npm run build && npm run package",
-    "build": "ng build --output-hashing=none",
-    "package:angular": "cat ./dist/my-custom-app/runtime.js ./dist/my-custom-app/main.js > custom-element-build/main-bundle.js",
+    "build": "ng build --output-hashing=none --single-bundle=true",
+    "build:angular": "ng build --output-hashing=none --single-bundle=true --keep-polyfills=false --keepStyles=false --aot=true",
     "package": "cat ./dist/my-custom-app/runtime.js ./dist/my-custom-app/polyfills.js ./dist/my-custom-app/main.js > custom-element-build/main-bundle.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -40,6 +40,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "ngx-build-plus": "^12.2.0",
     "typescript": "~4.3.5"
   }
 }
