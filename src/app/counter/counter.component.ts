@@ -15,12 +15,11 @@ export class CounterComponent implements OnInit {
   @Input() numStart: string;
   @Input() formControlRef: FormControl;
 
-  count = 0;
+  count = 4;
 
   ngOnInit(){
-    console.log({num: this.numStart });
     if(+this.numStart > 0) {
-      this.count = +this.numStart;
+      this.count = this.count + (+this.numStart);
     }
   }
 
