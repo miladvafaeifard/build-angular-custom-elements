@@ -4,9 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "shot": "./script.sh",
+    "shot:angular": "./script.sh && npm run build && npm run package:angular",
+    "shot": "./script.sh && npm run build && npm run package",
     "build": "ng build --output-hashing=none",
-    "package": "cat ./dist/my-custom-app/runtime.js ./dist/my-custom-app/main.js > custom-element-build/main-bundle.js",
+    "package:angular": "cat ./dist/my-custom-app/runtime.js ./dist/my-custom-app/main.js > custom-element-build/main-bundle.js",
+    "package": "cat ./dist/my-custom-app/runtime.js ./dist/my-custom-app/polyfills.js ./dist/my-custom-app/main.js > custom-element-build/main-bundle.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

@@ -9,4 +9,3 @@ else
     echo -e "Directory $DIR exists"
 fi
 
-npm run shot
