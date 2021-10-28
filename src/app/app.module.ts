@@ -1,5 +1,6 @@
 import { DoBootstrap, Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -11,14 +12,15 @@ import { CounterComponent } from './counter/counter.component';
     CounterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ]
 })
 export class AppModule implements DoBootstrap {
   constructor(private injector: Injector){}
 
   ngDoBootstrap() {
-    const customElement = createCustomElement(AppComponent, { injector: this.injector });
+    const customElement = createCustomElement(CounterComponent, { injector: this.injector });
     customElements.get('test-counter') || customElements.define('test-counter', customElement);
   } 
  }

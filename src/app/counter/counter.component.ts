@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-counter',
@@ -10,15 +11,26 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/
   encapsulation: ViewEncapsulation.ShadowDom,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CounterComponent {
+export class CounterComponent implements OnInit {
+  @Input() numStart: string;
+  @Input() formControlRef: FormControl;
 
   count = 0;
 
+  ngOnInit(){
+    console.log({num: this.numStart });
+    if(+this.numStart > 0) {
+      this.count = +this.numStart;
+    }
+  }
+
   increase() {
     this.count++;
+    this.formControlRef.setValue(this.count);
   }
 
   decrease() {
     this.count--;
+    this.formControlRef.setValue(this.count);
   }
 }
